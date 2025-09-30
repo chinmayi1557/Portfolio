@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandada Bhanu Chinmayi - Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Pacifico&family=Roboto+Slab:wght@400;700&family=Nunito:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      background: #f0f8ff url("backgound.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* Sidebar with background image + overlay */
+    .sidebar {
+      width: 260px;
+      background: url("background.jpg") no-repeat center center;
+      background-size: cover;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      padding: 30px 20px;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    /* Dark overlay */
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    /* Keep content above overlay */
+    .sidebar * {
+      position: relative;
+      z-index: 1;
+    }
+
+   .sidebar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 10px auto; /* removes top gap, keeps small space below */
+  display: block;
+  border: 3px solid #fff;
+}
+
+
+    .sidebar h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      margin: 10px 0;
+      color: #ffd700;
+    }
+
+    .sidebar p {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    /* Resume Buttons */
+    .resume-buttons {
+      margin: 15px 0;
+    }
+    .resume-buttons a {
+      display: inline-block;
+      padding: 8px 16px;
+      margin: 5px;
+      background: #ffd700;
+      color: #1b3b1b;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s;
+      font-family: 'Raleway', sans-serif;
+    }
+    .resume-buttons a:hover {
+      background: #ffeb75;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      margin: 12px 0;
+      font-weight: 600;
+      font-family: 'Raleway', sans-serif;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #a6e6a1;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 270px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    /* Intro/About */
+    .intro {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .intro h1 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #1b3b1b;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      font-family: 'Lora', serif;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Section Titles */
+    h2 {
+      font-family: 'Roboto Slab', serif;
+      color: #1b3b1b;
+      margin: 10px 0 20px 0;
+      border-bottom: 2px solid #1b3b1b;
+      display: inline-block;
+      padding-bottom: 5px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: #2e7d32;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .card p {
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Skills */
+    .skill-icon {
+      font-size: 32px;
+      color: #1b3b1b;
+      margin-bottom: 8px;
+      border: 2px solid #2e7d32;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .tooltip {
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    /* Certificates */
+    .cert-actions a {
+      margin-right: 10px;
+      text-decoration: none;
+      padding: 5px 10px;
+      background: #1b3b1b;
+      color: #fff;
+      border-radius: 5px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+    }
+
+    .cert-actions a:hover {
+      background: #144214;
+    }
+
+    /* Contact Icons */
+    .contact {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #f4f4f4;
+      color: #1b3b1b;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-icon:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .contact-icon.email:hover { background: #d93025; }
+    .contact-icon.phone:hover { background: #34a853; }
+    .contact-icon.github:hover { background: #333; }
+    .contact-icon.linkedin:hover { background: #0077b5; }
+
+    footer {
+      text-align: center;
+      margin: 20px 0 0 0;
+      font-size: 14px;
+      color: #1b3b1b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="logo.jpg" alt="Profile">
+    <h2>Mandada Bhanu Chinmayi</h2>
+    <p>CSE Student • ML Engineer • Web Developer</p>
+
+    <!-- Resume Buttons -->
+    <div class="resume-buttons">
+      <a href="CHINMAYI's_Resume.docx" target="_blank"><i class="fa fa-eye"></i> View Resume</a>
+      <a href="CHINMAYI's_Resume.docx" download><i class="fa fa-download"></i> Download Resume</a>
+    </div>
+
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <section id="about" class="intro">
+      <h1>About Me</h1>
+      <p>Hello, I am Mandada Bhanu Chinmayi, currently pursuing CSE. Passionate about Machine Learning, AI, and Full-Stack Development. I love building impactful projects and exploring innovative solutions.</p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="skill card">
+          <i class="fas fa-laptop-code skill-icon"></i>
+          <div class="tooltip">Python, Java, C++</div>
+        </div>
+        <div class="skill card">
+          <i class="fas fa-globe skill-icon"></i>
+          <div class="tooltip">HTML, CSS, JavaScript, React, Angular</div>
+        </div>
+        <div class="skill card">
+          <i class="fas fa-chart-bar skill-icon"></i>
+          <div class="tooltip">Machine Learning, Data Science</div>
+        </div>
+        <div class="skill card">
+          <i class="fas fa-cogs skill-icon"></i>
+          <div class="tooltip">Django, Flask</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Intern - SkillDunia</h3>
+          <p>Worked on AI & Machine Learning projects using Python.</p>
+        </div>
+        <div class="card">
+          <h3>Intern - CodTech</h3>
+          <p>Tasks: Decision Trees, Sentiment Analysis, Image Classification, Recommendation Systems.</p>
+        </div>
+        <div class="card">
+          <h3>Intern - NxtSync(present)</h3>
+          <p>Full Stack Development projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <h2>Certificates</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Python Course(INFOSYS)</h3>
+          <div class="cert-actions">
+            <a href="infosys(python).pdf" target="_blank">View</a>
+            <a href="infosys(python).pdf" download>Download</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Python Foundation(CISCO)</h3>
+          <div class="cert-actions">
+            <a href="cisco(python_ess-1).pdf" target="_blank">View</a>
+            <a href="cisco(python_ess-1).pdf" download>Download</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Cybersecurity Course(CISCO)</h3>
+          <div class="cert-actions">
+            <a href="cisco_cybersercurity.pdf" target="_blank">View</a>
+            <a href="cisco_cybersercurity.pdf" download>Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card">
+        <h3>B.Tech - Computer Science</h3>
+        <p>Currently pursuing 3rd Year, with focus on AI, ML, and Full Stack.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Smart Delivery Routing</h3>
+          <p>Optimized delivery routes using Dijkstra's Algorithm and SUMO simulation.</p>
+        </div>
+        <div class="card">
+          <h3>Cybersecurity Chatbot</h3>
+          <p>AI-based chatbot bridging citizens and police for cybercrime reporting.</p>
+        </div>
+        <div class="card">
+          <h3>Movie Magic</h3>
+          <p>Full-stack movie ticket booking web app with seat selection & payments.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <a href="mailto:mandadabhanu5@gmail.com" title="Email" class="contact-icon email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+918919962595" title="Phone" class="contact-icon phone">
+          <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://github.com/chinmayi1557" target="_blank" title="GitHub" class="contact-icon github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/Mandada-Bhanu-Chinmayi-04115a2b2" target="_blank" title="LinkedIn" class="contact-icon linkedin">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </section>
+
+    <footer>&copy; 2025 Mandada Bhanu Chinmayi</footer>
+  </div>
+</body>
+</html>
